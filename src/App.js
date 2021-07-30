@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import Card from "./Card";
+import cards from "./cardDeck.json";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Card
+        image={cards[0].image}
+        alt={`${cards[0].value} of ${cards[0].suit}`}
+        face="up"
+      />
+      <Card
+        image={cards[1].image}
+        alt={`${cards[1].value} of ${cards[1].suit}`}
+        face="down"
+      />
     </div>
   );
 }
