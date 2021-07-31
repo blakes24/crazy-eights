@@ -10,9 +10,10 @@ function Game() {
   const [playerHand, setPlayerHand] = useState([]);
   const [compHand, setCompHand] = useState([]);
   const [discard, setDiscard] = useState(null);
+  const [playersTurn, setPlayersTurn] = useState(true);
 
   function deal() {
-    let deckCards = shuffle(cards);
+    let deckCards = shuffle([...cards]);
     let hand1 = [];
     let hand2 = [];
     for (let i = 0; i < 5; i++) {
@@ -26,9 +27,23 @@ function Game() {
     setDiscard(firstCard);
   }
 
+  function playCard(selected) {
+    if (playersTurn) {
+      // check that card is valid to play
+      if (selected.suit === discard.suit || selected.value === discard.value) {
+        const updatedHand = playerHand.filter(
+          (card) => card.code !== selected.code
+        );
+        setDiscard(selected);
+        setPlayerHand(updatedHand);
+        setPlayersTurn(false);
+      }
+    }
+  }
+
   return (
     <div className={styles.main}>
-      <div>
+      <div className={styles.container}>
         <button onClick={deal}>Deal</button>
         {discard && (
           <>
@@ -37,8 +52,7 @@ function Game() {
               <Card data={deck[0]} face="down" />
               <Card data={discard} face="up" />
             </div>
-
-            <Hand cards={playerHand} face="up" />
+            <Hand cards={playerHand} face="up" play={playCard} />
           </>
         )}
       </div>
