@@ -1,19 +1,47 @@
 import Card from "./Card";
 import cards from "./cardDeck.json";
+import { useState } from "react";
+import { shuffle } from "./helpers";
+import Hand from "./Hand";
+import styles from "./Game.module.css";
 
 function Game() {
+  const [deck, setDeck] = useState([]);
+  const [playerHand, setPlayerHand] = useState([]);
+  const [compHand, setCompHand] = useState([]);
+  const [discard, setDiscard] = useState(null);
+
+  function deal() {
+    let deckCards = shuffle(cards);
+    let hand1 = [];
+    let hand2 = [];
+    for (let i = 0; i < 5; i++) {
+      hand1.push(deckCards.pop());
+      hand2.push(deckCards.pop());
+    }
+    let firstCard = deckCards.pop();
+    setDeck(deckCards);
+    setPlayerHand(hand1);
+    setCompHand(hand2);
+    setDiscard(firstCard);
+  }
+
   return (
-    <div className="Game">
-      <Card
-        image={cards[0].image}
-        alt={`${cards[0].value} of ${cards[0].suit}`}
-        face="up"
-      />
-      <Card
-        image={cards[1].image}
-        alt={`${cards[1].value} of ${cards[1].suit}`}
-        face="down"
-      />
+    <div className={styles.main}>
+      <div>
+        <button onClick={deal}>Deal</button>
+        {discard && (
+          <>
+            <Hand cards={compHand} face="down" />
+            <div className={styles.piles}>
+              <Card data={deck[0]} face="down" />
+              <Card data={discard} face="up" />
+            </div>
+
+            <Hand cards={playerHand} face="up" />
+          </>
+        )}
+      </div>
     </div>
   );
 }
