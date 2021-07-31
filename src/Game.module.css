@@ -1,0 +1,12 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.piles {
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem;
+}
