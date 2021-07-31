@@ -1,5 +1,5 @@
 .Card {
-	margin: .2rem 0;
+	margin: .3rem;
 	min-width: 1rem;
 }
 
@@ -7,4 +7,7 @@
 	width: 6rem;
 	border-radius: .3rem;
 	overflow: hidden;
+	border: 1px solid white;
+	background-color: white;
+	min-height: 8rem;
 }

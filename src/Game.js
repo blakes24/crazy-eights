@@ -4,15 +4,17 @@ import { useState } from "react";
 import { shuffle } from "./helpers";
 import Hand from "./Hand";
 import styles from "./Game.module.css";
+import Deck from "./Deck";
 
 function Game() {
   const [deck, setDeck] = useState([]);
   const [playerHand, setPlayerHand] = useState([]);
   const [compHand, setCompHand] = useState([]);
-  const [discard, setDiscard] = useState(null);
+  const [discard, setDiscard] = useState([]);
+  const [playersTurn, setPlayersTurn] = useState(true);
 
   function deal() {
-    let deckCards = shuffle(cards);
+    let deckCards = shuffle([...cards]);
     let hand1 = [];
     let hand2 = [];
     for (let i = 0; i < 5; i++) {
@@ -23,22 +25,75 @@ function Game() {
     setDeck(deckCards);
     setPlayerHand(hand1);
     setCompHand(hand2);
-    setDiscard(firstCard);
+    setDiscard([firstCard]);
+  }
+
+  function playCard(selected) {
+    const topCard = discard[discard.length-1]
+    if (playersTurn) {
+      // check that card is valid to play
+      if (selected.suit === topCard.suit || selected.value === topCard.value) {
+        const updatedHand = playerHand.filter(
+          (card) => card.code !== selected.code
+        );
+        setDiscard(discard => [...discard, selected]);
+        setPlayerHand(updatedHand);
+        setPlayersTurn(false);
+        setTimeout(() => {
+          compPlay();
+        }, 1000);
+      }
+    }
+  }
+
+  function compPlay() {
+    const topCard = discard[discard.length - 1];
+    let selected;
+    for (let card of compHand) {
+      if (card.suit === topCard.suit || card.value === topCard.value) {
+        selected = card;
+        break;
+      }
+    }
+    if (selected) {
+      const updatedHand = compHand.filter(
+        (card) => card.code !== selected.code
+      );
+      setDiscard((discard) => [...discard, selected]);
+      setCompHand(updatedHand);
+    } else {
+      draw("comp");
+    }
+    setPlayersTurn(true);
+  }
+
+  function draw(player) {
+    const topCard = deck[deck.length - 1];
+    if (player === "comp") {
+      setCompHand((compHand) => [...compHand, topCard]);
+    } else {
+      playersTurn && setPlayerHand((playerHand) => [...playerHand, topCard]);
+    }
+    if(deck.length === 1) {
+      setDeck(shuffle(discard.slice(0, -1)));
+      setDiscard((discard) => [discard[discard.length -1]]);
+    }
+    setDeck((deck) => deck.slice(0, -1));
   }
 
   return (
     <div className={styles.main}>
-      <div>
+      <div className={styles.container}>
         <button onClick={deal}>Deal</button>
-        {discard && (
+        {discard.length > 0 && (
           <>
             <Hand cards={compHand} face="down" />
             <div className={styles.piles}>
-              <Card data={deck[0]} face="down" />
-              <Card data={discard} face="up" />
+              <Deck draw={draw} />
+              <Card data={discard[discard.length-1]} face="up" />
             </div>
+            <Hand cards={playerHand} face="up" play={playCard} />
 
-            <Hand cards={playerHand} face="up" />
           </>
         )}
       </div>
