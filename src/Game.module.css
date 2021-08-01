@@ -1,7 +1,7 @@
 .main {
   padding: 1rem;
   height: 100vh;
-  background-color: rgb(2, 133, 89);
+  background-color: rgb(2, 163, 110);
 }
 
 .container {
@@ -13,8 +13,27 @@
   display: flex;
   justify-content: center;
   margin: 1rem;
+  margin-right: 2rem;
 }
 
-.piles > button {
-  margin: 3rem .1rem;
+.pass {
+  border-radius: .3rem;
+  padding: .5rem;
+  background-color: grey;
+}
+
+.passActive {
+  border-radius: .3rem;
+  padding: .5rem;
+  background-color: white;
+  border: 2px solid red;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.suit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 2rem;
 }

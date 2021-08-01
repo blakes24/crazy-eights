@@ -1,6 +1,7 @@
 .Card {
 	margin: .3rem;
 	min-width: 1rem;
+	cursor: pointer;
 }
 
 .Card > img {
@@ -10,4 +11,5 @@
 	border: 1px solid white;
 	background-color: white;
 	min-height: 8rem;
+	box-shadow: 1px 1px 4px rgb(1, 80, 56);
 }
