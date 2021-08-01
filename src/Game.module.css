@@ -1,18 +1,20 @@
 .main {
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
-  /* padding: 1rem; */
+  padding: 1rem;
   height: 100vh;
   background-color: rgb(2, 133, 89);
 }
 
 .container {
   padding: 2rem;
+  text-align: center;
 }
 
 .piles {
   display: flex;
   justify-content: center;
   margin: 1rem;
+}
+
+.piles > button {
+  margin: 3rem .1rem;
 }
