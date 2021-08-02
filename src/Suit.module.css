@@ -5,14 +5,21 @@
 }
 
 .select {
-  width: 8rem;
-  height: 8rem;
+  width: 7rem;
+  height: 7rem;
 }
 
-.select button {
+.options {
   display: inline-block;
+  background-color: white;
   width: 45%;
-  height: 50%;
-  font-size: 3rem;
+  height: 45%;
+  font-size: 2.5rem;
   cursor: pointer;
+  text-align: center;
+  border: 1px inset gray;
+}
+
+.options:hover {
+  background-color: rgb(229, 235, 241);
 }
