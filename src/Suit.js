@@ -7,7 +7,7 @@ function Suit({ suit, selectOpen, selectSuit }) {
       {selectOpen ? (
         <div className={styles.select}>
           {Object.keys(suitOptions).map((option) => (
-            <button
+            <div
               onClick={() => selectSuit(option)}
               style={{
                 color:
@@ -15,11 +15,12 @@ function Suit({ suit, selectOpen, selectSuit }) {
                     ? "red"
                     : "black",
               }}
+              className={styles.options}
               arial-label={option}
               key={option}
             >
               {suitOptions[option]}
-            </button>
+            </div>
           ))}
         </div>
       ) : (
