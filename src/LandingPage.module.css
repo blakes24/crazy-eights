@@ -1,0 +1,47 @@
+.main {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  background-image: url("./images/flying-cards.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 20vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title h1 {
+  text-align: center;
+  margin: 0;
+  color: red;
+  font-size: 3.5rem;
+  text-shadow: 2px 2px 2px black;
+}
+
+.rules {
+  margin: 1rem 2rem;
+  max-width: 50rem;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.rules h2 {
+  text-align: center;
+}
+
+.play {
+  display: block;
+  background-color: red;
+  border-radius: .5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  margin-top: 2rem;
+}
