@@ -44,6 +44,7 @@ function Game() {
     setPlayed(false);
     setWinner(null);
     setSuit(null);
+    setSuitSelectOpen(false);
     deal();
   }
 
@@ -61,16 +62,16 @@ function Game() {
         );
         setDiscard((discard) => [...discard, selected]);
         setPlayerHand(updatedHand);
-        
+        // check for win condition
         if (updatedHand.length === 0) {
           setWinner("player");
         } else if (selected.value === "8") {
-          setSuitSelectOpen(true)
+          setSuitSelectOpen(true);
         } else {
           setSuit(selected.suit);
           setPlayersTurn(false);
           setTimeout(() => {
-            compPlay(selected);
+            compPlay(selected, selected.suit);
           }, 1000);
         }
       }
@@ -80,20 +81,27 @@ function Game() {
   function compPlay(topCard = discard[discard.length - 1], currentSuit = suit) {
     let selected;
     for (let card of compHand) {
-      if (card.suit === currentSuit || card.value === topCard.value || card.value === "8") {
+      if (
+        card.suit === currentSuit ||
+        card.value === topCard.value ||
+        card.value === "8"
+      ) {
         selected = card;
         break;
       }
     }
+    // check if valid play was found, if not computer draws
     if (selected) {
       const updatedHand = compHand.filter(
         (card) => card.code !== selected.code
       );
       setDiscard((discard) => [...discard, selected]);
       setCompHand(updatedHand);
-      setSuit(selected.suit)
+      setSuit(selected.suit);
       if (updatedHand.length === 0) {
-        setWinner("comp");
+        setTimeout(() => {
+          setWinner("comp");
+        }, 1000);
       }
     } else {
       draw("comp");
@@ -112,7 +120,12 @@ function Game() {
         setPlayed(true);
       }
     }
+    // if deck is on last card shuffle discard pile to refresh deck
     if (deck.length === 1) {
+      // player loses if there are no more cards to draw
+      if (discard.length <= 1) {
+        setWinner(player === "comp" ? "player" : "comp");
+      }
       setDeck(shuffle(discard.slice(0, -1)));
       setDiscard((discard) => [discard[discard.length - 1]]);
     } else {
@@ -138,40 +151,48 @@ function Game() {
 
   return (
     <div className={styles.main}>
-      <div className={styles.container}>
-        {deck.length === 0 ? (
-          <>
-            <button onClick={deal}>Deal</button>
-            <Deck draw={draw} />
-          </>
-        ) : (
-          <>
-            {winner && <EndGame winner={winner} reset={reset} />}
-            <Hand cards={compHand} face="down" />
-            <div className={styles.piles}>
-              <div className={styles.suit}>
-                <Suit
-                  suit={suit}
-                  selectOpen={suitSelectOpen}
-                  selectSuit={selectSuit}
-                />
-                {!suitSelectOpen && (
-                  <button
-                    onClick={played ? passTurn : undefined}
-                    className={played && playersTurn ? styles.passActive : styles.pass}
-                  >
-                    Pass
-                  </button>
-                )}
-              </div>
+      {winner ? (
+        <EndGame winner={winner} reset={reset} />
+      ) : (
+        <div className={styles.container}>
+          {deck.length === 0 ? (
+            <>
+              <button onClick={deal} className={styles.deal}>
+                Deal
+              </button>
+              <Deck draw={deal} />
+            </>
+          ) : (
+            <>
+              <Hand cards={compHand} face="down" />
+              <div className={styles.piles}>
+                <div className={styles.suit}>
+                  <Suit
+                    suit={suit}
+                    selectOpen={suitSelectOpen}
+                    selectSuit={selectSuit}
+                  />
+                  {!suitSelectOpen && (
+                    <button
+                      onClick={played ? passTurn : undefined}
+                      className={
+                        played && playersTurn ? styles.passActive : styles.pass
+                      }
+                    >
+                      Pass
+                    </button>
+                  )}
+                </div>
 
-              <Deck draw={draw} />
-              <Card data={discard[discard.length - 1]} face="up" />
-            </div>
-            <Hand cards={playerHand} face="up" play={playCard} />
-          </>
-        )}
-      </div>
+                <Deck draw={draw} />
+                <Card data={discard[discard.length - 1]} face="up" />
+              </div>
+              <Hand cards={playerHand} face="up" play={playCard} />
+              <button onClick={reset}>New Game</button>
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 }

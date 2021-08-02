@@ -1,0 +1,22 @@
+.main {
+  height: 3rem;
+  background-color: black;
+}
+
+.link {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  margin: 1rem .5rem;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.title {
+  margin: 1rem .5rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
