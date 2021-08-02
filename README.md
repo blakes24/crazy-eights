@@ -3,9 +3,16 @@
 ![A screenshot of the game board](./public/game.png)
 
 ### Description  
-A Crazy Eights card game played against the computer built with React.
+A crazy eights card game played against the computer. Built with React for the Mintbean Hiring Hackathon for Jr Web Devs.
 
 Live Site: [https://crazyeights.netlify.app](https://crazyeights.netlify.app)
+
+### Getting Started 
+- Clone or download the repo.  
+- Install dependencies by running `yarn install`
+- Run the app in development mode with `yarn start`
+- View the app at http://localhost:3000 
+- To build the app for production run `yarn build`
 
 ### How to play 
 - Click Deal to start the game
@@ -21,13 +28,6 @@ Live Site: [https://crazyeights.netlify.app](https://crazyeights.netlify.app)
 - JavaScript
 - CSS
 - HTML 
-
-### Getting Started 
-- Clone or download the repo.  
-- Install dependencies by running `yarn install`
-- Run the app in development mode with `yarn start`
-- View the app at http://localhost:3000 
-- To build the app for production run `yarn build`
 
 ### Contact 
 - Developer: Blakely Burns  
