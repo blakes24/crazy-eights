@@ -5,7 +5,7 @@
 ### Description  
 A Crazy Eights card game played against the computer built with React.
 
-Live Site: [https://crazyeights.netlify.app] (https://crazyeights.netlify.app)
+Live Site: [https://crazyeights.netlify.app](https://crazyeights.netlify.app)
 
 ### How to play 
 - Click Deal to start the game
@@ -31,5 +31,5 @@ Live Site: [https://crazyeights.netlify.app] (https://crazyeights.netlify.app)
 
 ### Contact 
 - Developer: Blakely Burns  
-- LinkedIn: [https://www.linkedin.com/in/blakelyburns] (https://www.linkedin.com/in/blakelyburns)
-- GitHub: [https://github.com/blakes24] (https://github.com/blakes24) 
+- LinkedIn: [https://www.linkedin.com/in/blakelyburns](https://www.linkedin.com/in/blakelyburns)
+- GitHub: [https://github.com/blakes24](https://github.com/blakes24) 
