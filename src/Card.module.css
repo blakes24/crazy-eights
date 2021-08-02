@@ -1,0 +1,15 @@
+.main {
+	margin: .3rem;
+	min-width: 1rem;
+	cursor: pointer;
+}
+
+.main img {
+	width: 6rem;
+	border-radius: .3rem;
+	overflow: hidden;
+	border: 1px solid white;
+	background-color: white;
+	min-height: 8rem;
+	box-shadow: 1px 1px 4px rgb(1, 80, 56);
+}
