@@ -1,5 +1,5 @@
 .main {
-  height: 3rem;
+  height: 3.5rem;
   background-color: black;
 }
 
@@ -7,7 +7,7 @@
   display: inline-block;
   color: white;
   text-decoration: none;
-  margin: 1rem .5rem;
+  margin: 1.2rem .5rem;
 }
 
 .link:hover {
@@ -19,4 +19,5 @@
   font-weight: bold;
   color: white;
   text-decoration: none;
+  margin-left: 1.2rem;
 }

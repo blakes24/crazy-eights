@@ -1,5 +1,5 @@
 .main {
-  min-height: calc(100vh - 3rem);
+  min-height: calc(100vh - 3.5rem);
   background-color: rgb(2, 163, 110);
   position: relative;
 }
@@ -20,8 +20,8 @@
   cursor: pointer;
 }
 
-.deal:hover {
-  background-color: rgb(0, 0, 199);
+.deal button:hover {
+  background-color: rgb(20, 1, 194);
 }
 
 .piles {
@@ -52,16 +52,17 @@
   margin-right: .5rem;
 }
 
-.container > button {
+.restart {
   background-color: blue;
   color: white;
   padding: .5rem 1rem;
   border-radius: .3rem;
   margin-top: 3rem;
+  margin-right: 1rem;
   cursor: pointer;
   box-shadow: 1px 1px 2px black;
 }
 
-.container > button:hover {
+.restart:hover {
   background-color: rgb(20, 1, 194);
 }
