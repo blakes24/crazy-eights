@@ -28,11 +28,16 @@ function Game() {
       hand2.push(deckCards.pop());
     }
     let firstCard = deckCards.pop();
-    setDeck(deckCards);
-    setPlayerHand(hand1);
-    setCompHand(hand2);
-    setDiscard([firstCard]);
-    setSuit(firstCard.suit);
+    //re-deal cards if top card is an eight
+    if (firstCard.value === "8") {
+      deal();
+    } else {
+      setDeck(deckCards);
+      setPlayerHand(hand1);
+      setCompHand(hand2);
+      setDiscard([firstCard]);
+      setSuit(firstCard.suit);
+    }
   }
 
   function reset() {
@@ -64,6 +69,9 @@ function Game() {
         setPlayerHand(updatedHand);
         // check for win condition
         if (updatedHand.length === 0) {
+          setTimeout(() => {
+            setWinner("player");
+          }, 1000);
           setWinner("player");
         } else if (selected.value === "8") {
           setSuitSelectOpen(true);
@@ -95,9 +103,14 @@ function Game() {
       const updatedHand = compHand.filter(
         (card) => card.code !== selected.code
       );
+      // pick a suit from computer's hand if 8 is selected
+      if (selected.value === "8") {
+        setSuit(compHand[0]?.suit);
+      } else {
+        setSuit(selected.suit);
+      }
       setDiscard((discard) => [...discard, selected]);
       setCompHand(updatedHand);
-      setSuit(selected.suit);
       if (updatedHand.length === 0) {
         setTimeout(() => {
           setWinner("comp");
