@@ -3,6 +3,10 @@ import styles from "./LandingPage.module.css";
 import playCard from "./images/play-card.gif";
 import playEight from "./images/eight.gif";
 import drawCard from "./images/draw.gif";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
+
 
 function LandingPage() {
   return (
@@ -10,12 +14,12 @@ function LandingPage() {
       <h1 className={styles.title}>Crazy Eights</h1>
       <div className={styles.main}>
         <div className={styles.rules}>
-          <h3>How to Win</h3>
+          <h2>How to Win</h2>
           <p>Be the first to discard all of your cards to win the game.</p>
           <Link to="/game" className={styles.play}>
             Start Game
           </Link>
-          <h3>How to Play</h3>
+          <h2>How to Play</h2>
           <p>
             Click on a card from your hand that matches either the suit or the
             value of the top card in the discard pile.{" "}
@@ -41,6 +45,32 @@ function LandingPage() {
           </Link>
         </div>
       </div>
+      <footer className={styles.footer}>
+        Blakely Burns
+        <div className={styles.icons}>
+          <a
+            href="https://www.linkedin.com/in/blakelyburns/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FontAwesomeIcon icon={faLinkedin} />
+          </a>
+          <a
+            href="https://github.com/blakes24/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FontAwesomeIcon icon={faGithub} />
+          </a>
+          <a
+            href="mailto:burnsblakely@gmail.com"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FontAwesomeIcon icon={faEnvelope} />
+          </a>
+        </div>
+      </footer>
     </>
   );
 }

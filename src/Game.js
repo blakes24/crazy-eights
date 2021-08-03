@@ -188,7 +188,9 @@ function Game() {
                 <Card data={discard[discard.length - 1]} face="up" />
               </div>
               <Hand cards={playerHand} face="up" play={playCard} />
-              <button onClick={reset}>New Game</button>
+              <button onClick={reset} className={styles.restart}>
+                New Game
+              </button>
             </>
           )}
         </div>

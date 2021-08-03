@@ -8,10 +8,10 @@ function Navbar() {
         Crazy Eights
       </NavLink>
       <NavLink to="/" className={styles.link}>
-        Rules
+        About
       </NavLink>
       <NavLink to="/game" className={styles.link}>
-        Play
+        Game
       </NavLink>
     </div>
   );

@@ -19,14 +19,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
 }
 
 .rules h2 {
   text-align: center;
-  margin: 0;
-}
-
-.rules h3 {
   margin-bottom: 0;
 }
 
@@ -49,6 +46,24 @@
 
 .gif {
   width: 80vw;
-  max-width: 30rem;
+  max-width: 40rem;
   margin: 1rem auto;
+}
+
+.footer {
+  background-color: black;
+  color: white;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.icons {
+  margin-top: 1.5rem;
+}
+
+.icons a {
+  color: white;
+  font-size: 2rem;
+  margin: 1rem;
 }
