@@ -6,3 +6,9 @@
   min-height: 9rem;
   overflow-wrap: normal;
 }
+
+@media screen and (min-width: 1024px) {
+  .main {
+    margin: 0;
+  }
+}

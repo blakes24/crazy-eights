@@ -2,20 +2,36 @@
   margin: 0;
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: calc(100vh - 3.5rem);
 }
 
 .title {
+  height: calc(100vh - 3.5rem);
+  background-image: url("./images/flying-cards.jpg");
+  background-position:right;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title h1 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
   text-align: center;
-  margin-bottom: 0;
   color: red;
-  font-size: 3rem;
-  text-shadow: 1px 1px 2px gray;
-  -webkit-text-stroke: 1px black;
+  font-size: 5rem;
+  font-weight: 900;
+  text-shadow: 1px 1px 2px white;
+  -webkit-text-stroke: 1px white;
 }
 
 .rules {
   margin: .5rem 2rem;
-  max-width: 50rem;
+  max-width: 80rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,6 +41,7 @@
 .rules h2 {
   text-align: center;
   margin-bottom: 0;
+  font-size: 2rem;
 }
 
 .play {
@@ -42,6 +59,10 @@
 
 .play:hover {
   background-color: rgb(204, 0, 0);
+}
+
+.buttons a {
+  margin: 1rem;
 }
 
 .gif {
@@ -66,4 +87,42 @@
   color: white;
   font-size: 2rem;
   margin: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .title h1 {
+    margin-bottom: 4rem;
+  }
+  
+  .buttons {
+  display: flex;
+  }
+
+  .rules {
+    margin-bottom: 3rem;
+    font-size: 1.5rem;
+  }
+
+  .rules > h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .rowText {
+    width: 40%;
+    margin: 1rem 2rem;
+  }
+  .row img {
+    width: 40%;
+    margin: 1rem 2rem;
+  }
+
+  .reverse {
+    flex-direction: row-reverse;
+  }
 }

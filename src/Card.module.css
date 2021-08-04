@@ -13,3 +13,10 @@
 	min-height: 8rem;
 	box-shadow: 1px 1px 4px rgb(1, 80, 56);
 }
+
+@media screen and (min-width: 1024px) {
+	.main img {
+		width: 8rem;
+		min-height: 11rem;
+	}
+}
